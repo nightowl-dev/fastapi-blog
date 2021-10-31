@@ -27,3 +27,8 @@ def get_posts():
 def add_post(post:Post):
     postdb.append(post.dict())
     return postdb[-1]
+
+@app.get("/blog/{post_id}")
+def get_post(post_id:int):
+    post = post_id - 1
+    return postdb[post]
