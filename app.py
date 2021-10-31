@@ -19,7 +19,11 @@ class Post(BaseModel):
 def read_root():
     return {"home": "Home Page"}
 
-
 @app.get("/blog")
 def get_posts():
     return postdb
+
+@app.post("/blog")
+def add_post(post:Post):
+    postdb.append(post.dict())
+    return postdb[-1]
